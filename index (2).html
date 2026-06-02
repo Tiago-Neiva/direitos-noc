@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Direitos NOC – Conheça seus Direitos Trabalhistas</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --preto: #0a0a0f;
+    --branco: #f5f4f0;
+    --amarelo: #f5c400;
+    --azul: #1a3a6b;
+    --cinza: #2a2a35;
+    --cinza-claro: #e8e7e2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--preto);
+    color: var(--branco);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(245,196,0,0.15);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.1rem;
+    color: var(--amarelo);
+    letter-spacing: -0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(245,244,240,0.6);
+    text-decoration: none; font-size: 0.85rem;
+    font-weight: 400; letter-spacing: 0.05em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--amarelo); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(26,58,107,0.5) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(245,196,0,0.08) 0%, transparent 60%),
+      var(--preto);
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--amarelo);
+    color: var(--preto);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 0.7rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    margin-bottom: 2rem;
+    position: relative;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    max-width: 900px;
+    position: relative;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--amarelo);
+  }
+  .hero-sub {
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    color: rgba(245,244,240,0.6);
+    max-width: 520px;
+    line-height: 1.6;
+    position: relative;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .hero-cta {
+    margin-top: 3rem;
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    position: relative;
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.9rem 2rem;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600; font-size: 0.85rem;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer; border: none;
+  }
+  .btn-primary {
+    background: var(--amarelo); color: var(--preto);
+  }
+  .btn-primary:hover { background: #ffd700; transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--branco);
+    border: 1px solid rgba(245,244,240,0.3);
+  }
+  .btn-outline:hover { border-color: var(--amarelo); color: var(--amarelo); }
+
+  .hero-scroll {
+    position: absolute; bottom: 2rem; right: 3rem;
+    font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(245,244,240,0.3);
+    writing-mode: vertical-rl;
+    animation: fadeUp 1s 0.6s ease both;
+  }
+
+  /* SEÇÕES GERAIS */
+  section { padding: 6rem 3rem; }
+
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--amarelo); margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1.05; letter-spacing: -0.02em;
+    max-width: 700px;
+  }
+
+  /* DIREITOS GRID */
+  .direitos { background: var(--cinza); }
+  .direitos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    margin-top: 4rem;
+    border: 1px solid rgba(245,244,240,0.05);
+  }
+  .direito-card {
+    background: var(--cinza);
+    padding: 2.5rem;
+    border: 1px solid rgba(245,244,240,0.05);
+    transition: background 0.3s;
+    cursor: default;
+  }
+  .direito-card:hover { background: rgba(245,196,0,0.05); }
+  .direito-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 3rem; font-weight: 800;
+    color: rgba(245,196,0,0.2);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .direito-titulo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    color: var(--amarelo);
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.01em;
+  }
+  .direito-texto {
+    font-size: 0.9rem;
+    color: rgba(245,244,240,0.65);
+    line-height: 1.7;
+  }
+  .direito-destaque {
+    margin-top: 1rem;
+    padding: 0.6rem 1rem;
+    background: rgba(245,196,0,0.1);
+    border-left: 3px solid var(--amarelo);
+    font-size: 0.82rem;
+    color: var(--amarelo);
+    font-weight: 500;
+  }
+
+  /* JORNADA 12x36 */
+  .jornada { background: var(--preto); }
+  .jornada-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    margin-top: 4rem;
+    align-items: start;
+  }
+  .jornada-info p {
+    color: rgba(245,244,240,0.65);
+    line-height: 1.8; font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+  .jornada-tabela {
+    border: 1px solid rgba(245,244,240,0.1);
+  }
+  .tabela-row {
+    display: flex;
+    border-bottom: 1px solid rgba(245,244,240,0.07);
+  }
+  .tabela-row:last-child { border-bottom: none; }
+  .tabela-label {
+    flex: 0 0 50%;
+    padding: 1rem 1.5rem;
+    font-size: 0.8rem; font-weight: 500;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    color: rgba(245,244,240,0.4);
+    border-right: 1px solid rgba(245,244,240,0.07);
+  }
+  .tabela-valor {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 0.95rem;
+    color: var(--branco);
+  }
+  .tabela-valor.destaque { color: var(--amarelo); }
+
+  /* CALCULADORA */
+  .calculadora { background: var(--azul); }
+  .calc-box {
+    max-width: 680px;
+    margin-top: 3rem;
+  }
+  .calc-group {
+    margin-bottom: 1.5rem;
+  }
+  .calc-label {
+    display: block;
+    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(245,244,240,0.5); font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+  .calc-input {
+    width: 100%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--branco);
+    padding: 0.9rem 1.2rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem; font-weight: 600;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .calc-input:focus { border-color: var(--amarelo); }
+  .calc-resultado {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: rgba(0,0,0,0.3);
+    border-left: 4px solid var(--amarelo);
+    display: none;
+  }
+  .calc-resultado.ativo { display: block; }
+  .resultado-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .resultado-item:last-child { border-bottom: none; }
+  .resultado-nome { font-size: 0.85rem; color: rgba(245,244,240,0.6); }
+  .resultado-valor {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    color: var(--amarelo);
+  }
+
+  /* DIREITOS NOTURNOS */
+  .noturno { background: var(--preto); }
+  .noturno-lista {
+    margin-top: 3rem;
+    display: flex; flex-direction: column; gap: 0;
+  }
+  .noturno-item {
+    display: flex; gap: 2rem; align-items: flex-start;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(245,244,240,0.07);
+    transition: padding-left 0.3s;
+  }
+  .noturno-item:hover { padding-left: 1rem; }
+  .noturno-icon {
+    flex: 0 0 48px; height: 48px;
+    background: rgba(245,196,0,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+  }
+  .noturno-titulo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+  .noturno-desc {
+    font-size: 0.88rem;
+    color: rgba(245,244,240,0.6);
+    line-height: 1.7;
+  }
+
+  /* QUIZ */
+  .quiz-section { background: var(--cinza); }
+  .quiz-box {
+    max-width: 700px;
+    margin-top: 3rem;
+  }
+  .quiz-pergunta {
+    background: rgba(245,244,240,0.04);
+    border: 1px solid rgba(245,244,240,0.08);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    display: none;
+  }
+  .quiz-pergunta.ativa { display: block; }
+  .quiz-enunciado {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600; font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+  .quiz-opcoes { display: flex; flex-direction: column; gap: 0.7rem; }
+  .quiz-opcao {
+    padding: 0.9rem 1.2rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--branco);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+  }
+  .quiz-opcao:hover { background: rgba(245,196,0,0.1); border-color: var(--amarelo); }
+  .quiz-opcao.correta { background: rgba(0,200,100,0.15); border-color: #00c864; color: #00c864; }
+  .quiz-opcao.errada { background: rgba(255,60,60,0.15); border-color: #ff3c3c; color: #ff3c3c; }
+  .quiz-feedback {
+    margin-top: 1rem; padding: 1rem;
+    font-size: 0.85rem; line-height: 1.6;
+    display: none;
+  }
+  .quiz-feedback.ativo { display: block; }
+  .quiz-nav { margin-top: 1.5rem; display: flex; justify-content: flex-end; gap: 1rem; }
+  .quiz-progresso {
+    font-size: 0.75rem; letter-spacing: 0.1em;
+    color: rgba(245,244,240,0.3); text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .quiz-resultado-final {
+    padding: 3rem;
+    background: rgba(245,196,0,0.05);
+    border: 1px solid rgba(245,196,0,0.2);
+    text-align: center;
+    display: none;
+  }
+  .quiz-resultado-final.ativo { display: block; }
+  .quiz-placar {
+    font-family: 'Syne', sans-serif;
+    font-size: 4rem; font-weight: 800;
+    color: var(--amarelo);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--cinza);
+    padding: 3rem;
+    border-top: 1px solid rgba(245,244,240,0.07);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; color: var(--amarelo);
+    font-size: 1rem;
+  }
+  .footer-info {
+    font-size: 0.78rem;
+    color: rgba(245,244,240,0.3);
+    line-height: 1.6;
+    text-align: right;
+  }
+
+  /* ANIMAÇÕES */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visivel { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .jornada-content { grid-template-columns: 1fr; gap: 3rem; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-info { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Direitos NOC</div>
+  <ul class="nav-links">
+    <li><a href="#direitos">Direitos</a></li>
+    <li><a href="#jornada">Jornada 12x36</a></li>
+    <li><a href="#calculadora">Calculadora</a></li>
+    <li><a href="#noturno">Turno Noturno</a></li>
+    <li><a href="#quiz">Quiz</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-tag">NOC STTE – Embratel · Salvador/BA</div>
+  <h1>Você conhece os seus <em>direitos</em> trabalhistas?</h1>
+  <p class="hero-sub">Um guia completo para operadores de NOC que trabalham em regime 12x36, com foco nos direitos garantidos pela CLT e pela Constituição Federal.</p>
+  <div class="hero-cta">
+    <a href="#direitos" class="btn btn-primary">Ver meus direitos</a>
+    <a href="#calculadora" class="btn btn-outline">Calcular adicionais</a>
+  </div>
+  <span class="hero-scroll">Role para baixo</span>
+</section>
+
+<!-- DIREITOS PRINCIPAIS -->
+<section class="direitos" id="direitos">
+  <div class="section-label">CLT & Constituição Federal</div>
+  <h2 class="section-title reveal">Seus principais direitos como operador de NOC</h2>
+
+  <div class="direitos-grid">
+    <div class="direito-card reveal">
+      <div class="direito-num">01</div>
+      <div class="direito-titulo">Adicional Noturno</div>
+      <div class="direito-texto">Todo trabalho realizado entre 22h e 5h dá direito a um adicional de no mínimo 20% sobre o salário-hora normal, conforme o Art. 73 da CLT.</div>
+      <div class="direito-destaque">Mínimo: +20% por hora noturna</div>
+    </div>
+    <div class="direito-card reveal">
+      <div class="direito-num">02</div>
+      <div class="direito-titulo">Hora Noturna Reduzida</div>
+      <div class="direito-texto">A hora noturna não tem 60 minutos: ela equivale a 52 minutos e 30 segundos. Isso significa que 8 horas noturnas reais correspondem a mais de 8 horas para fins de cálculo salarial.</div>
+      <div class="direito-destaque">1 hora noturna = 52min30s</div>
+    </div>
+    <div class="direito-card reveal">
+      <div class="direito-num">03</div>
+      <div class="direito-titulo">Intervalo para Descanso</div>
+      <div class="direito-texto">Em jornadas de 12 horas, o trabalhador tem direito a intervalo mínimo de 1 hora para refeição e descanso, que deve ser remunerado caso não seja concedido (Art. 71 da CLT).</div>
+      <div class="direito-destaque">Mínimo: 1h de intervalo por turno</div>
+    </div>
+    <div class="direito-card reveal">
+      <div class="direito-num">04</div>
+      <div class="direito-titulo">Folga Compensatória 12x36</div>
+      <div class="direito-texto">No regime 12x36, o trabalhador descansa 36 horas após cada 12 horas trabalhadas. A Súmula 444 do TST e a Reforma Trabalhista (Lei 13.467/2017) reconhecem e regulamentam este regime.</div>
+      <div class="direito-destaque">36h de descanso garantidas</div>
+    </div>
+    <div class="direito-card reveal">
+      <div class="direito-num">05</div>
+      <div class="direito-titulo">Horas Extras</div>
+      <div class="direito-texto">Qualquer hora trabalhada além das 12 horas do turno deve ser paga como hora extra, com acréscimo mínimo de 50% sobre a hora normal (100% em domingos e feriados).</div>
+      <div class="direito-destaque">+50% em dias normais / +100% em feriados</div>
+    </div>
+    <div class="direito-card reveal">
+      <div class="direito-num">06</div>
+      <div class="direito-titulo">Insalubridade / Periculosidade</div>
+      <div class="direito-texto">Dependendo das condições de trabalho (exposição a riscos elétricos, ambientes de pressão constante), o trabalhador pode ter direito a adicional de insalubridade (10%, 20% ou 40%) ou periculosidade (30%).</div>
+      <div class="direito-destaque">Verifique com o SESMT da empresa</div>
+    </div>
+  </div>
+</section>
+
+<!-- JORNADA 12x36 -->
+<section class="jornada" id="jornada">
+  <div class="section-label">Regime de Trabalho</div>
+  <h2 class="section-title reveal">Entendendo a jornada 12x36</h2>
+  <div class="jornada-content">
+    <div class="jornada-info reveal">
+      <p>O regime 12x36 é amplamente utilizado em operações que exigem cobertura contínua, como o NOC. Nele, o trabalhador cumpre 12 horas de trabalho seguidas de 36 horas de descanso.</p>
+      <p>Esse regime é legal e regulamentado no Brasil desde a Reforma Trabalhista de 2017, que inseriu o Art. 59-A na CLT. Antes disso, já era reconhecido pelo TST por meio da Súmula 444.</p>
+      <p>Importante: mesmo nesse regime, todos os direitos trabalhistas continuam valendo — adicional noturno, horas extras, intervalos, férias, 13º salário e FGTS.</p>
+    </div>
+    <div class="jornada-tabela reveal">
+      <div class="tabela-row">
+        <div class="tabela-label">Horas trabalhadas</div>
+        <div class="tabela-valor destaque">12h por turno</div>
+      </div>
+      <div class="tabela-row">
+        <div class="tabela-label">Descanso garantido</div>
+        <div class="tabela-valor destaque">36h consecutivas</div>
+      </div>
+      <div class="tabela-row">
+        <div class="tabela-label">Média semanal</div>
+        <div class="tabela-valor">~42h/semana</div>
+      </div>
+      <div class="tabela-row">
+        <div class="tabela-label">Base legal</div>
+        <div class="tabela-valor">Art. 59-A da CLT</div>
+      </div>
+      <div class="tabela-row">
+        <div class="tabela-label">Intervalo mínimo</div>
+        <div class="tabela-valor">1h por turno</div>
+      </div>
+      <div class="tabela-row">
+        <div class="tabela-label">Hora extra</div>
+        <div class="tabela-valor destaque">Acima de 12h/turno</div>
+      </div>
+      <div class="tabela-row">
+        <div class="tabela-label">Adicional noturno</div>
+        <div class="tabela-valor destaque">22h às 5h (+20%)</div>
+      </div>
+      <div class="tabela-row">
+        <div class="tabela-label">Feriado trabalhado</div>
+        <div class="tabela-valor">Folga compensatória ou +100%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULADORA -->
+<section class="calculadora" id="calculadora">
+  <div class="section-label">Ferramenta Prática</div>
+  <h2 class="section-title reveal">Calculadora de adicionais</h2>
+  <div class="calc-box reveal">
+    <div class="calc-group">
+      <label class="calc-label">Salário mensal bruto (R$)</label>
+      <input type="number" class="calc-input" id="salario" placeholder="ex: 3500" oninput="calcular()">
+    </div>
+    <div class="calc-group">
+      <label class="calc-label">Horas noturnas por mês (entre 22h e 5h)</label>
+      <input type="number" class="calc-input" id="horasNoturnas" placeholder="ex: 96" oninput="calcular()">
+    </div>
+    <div class="calc-group">
+      <label class="calc-label">Horas extras realizadas no mês</label>
+      <input type="number" class="calc-input" id="horasExtras" placeholder="ex: 0" oninput="calcular()">
+    </div>
+
+    <div class="calc-resultado" id="resultado">
+      <div class="resultado-item">
+        <span class="resultado-nome">Salário-hora normal</span>
+        <span class="resultado-valor" id="r-hora">—</span>
+      </div>
+      <div class="resultado-item">
+        <span class="resultado-nome">Adicional noturno (20%)</span>
+        <span class="resultado-valor" id="r-noturno">—</span>
+      </div>
+      <div class="resultado-item">
+        <span class="resultado-nome">Adicional horas extras (50%)</span>
+        <span class="resultado-valor" id="r-extra">—</span>
+      </div>
+      <div class="resultado-item">
+        <span class="resultado-nome" style="font-weight:600;color:var(--branco)">Total de adicionais estimados</span>
+        <span class="resultado-valor" id="r-total" style="font-size:1.3rem">—</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TURNO NOTURNO -->
+<section class="noturno" id="noturno">
+  <div class="section-label">Proteções Específicas</div>
+  <h2 class="section-title reveal">Direitos do trabalhador noturno</h2>
+  <div class="noturno-lista">
+    <div class="noturno-item reveal">
+      <div class="noturno-icon">🌙</div>
+      <div>
+        <div class="noturno-titulo">Adicional noturno obrigatório</div>
+        <div class="noturno-desc">Garantido pelo Art. 73 da CLT para todo trabalho entre 22h e 5h. O percentual mínimo é de 20%, podendo ser maior por acordo coletivo. Muitos contratos preveem percentuais maiores — verifique o seu.</div>
+      </div>
+    </div>
+    <div class="noturno-item reveal">
+      <div class="noturno-icon">⏱️</div>
+      <div>
+        <div class="noturno-titulo">Hora noturna reduzida</div>
+        <div class="noturno-desc">A hora noturna equivale a 52 minutos e 30 segundos. Isso gera horas extras fictícias em favor do trabalhador. Portanto, quem trabalha 12 horas integralmente no turno noturno tem direito a remuneração equivalente a mais horas.</div>
+      </div>
+    </div>
+    <div class="noturno-item reveal">
+      <div class="noturno-icon">🏥</div>
+      <div>
+        <div class="noturno-titulo">Saúde e medicina do trabalho</div>
+        <div class="noturno-desc">A empresa é obrigada a realizar exames periódicos para trabalhadores noturnos, incluindo avaliação dos impactos do trabalho em turnos sobre a saúde física e mental. Exija o PCMSO (Programa de Controle Médico de Saúde Ocupacional).</div>
+      </div>
+    </div>
+    <div class="noturno-item reveal">
+      <div class="noturno-icon">📋</div>
+      <div>
+        <div class="noturno-titulo">Controle de jornada</div>
+        <div class="noturno-desc">Empresas com mais de 20 funcionários são obrigadas a registrar o ponto de cada trabalhador. Guarde seus registros de ponto — eles são sua principal prova em caso de irregularidades.</div>
+      </div>
+    </div>
+    <div class="noturno-item reveal">
+      <div class="noturno-icon">⚖️</div>
+      <div>
+        <div class="noturno-titulo">Onde recorrer se seus direitos forem violados</div>
+        <div class="noturno-desc">Procure o sindicato da sua categoria, o Ministério do Trabalho e Emprego (MTE) ou a Justiça do Trabalho. Você também pode realizar denúncia anônima pelo portal gov.br. O prazo para reclamar direitos trabalhistas é de até 2 anos após o término do contrato.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="quiz-section" id="quiz">
+  <div class="section-label">Teste seu Conhecimento</div>
+  <h2 class="section-title reveal">Você sabe seus direitos?</h2>
+  <div class="quiz-box reveal">
+    <div class="quiz-progresso" id="quiz-progresso">Pergunta 1 de 5</div>
+
+    <!-- P1 -->
+    <div class="quiz-pergunta ativa" data-resposta="1">
+      <div class="quiz-enunciado">Qual é o adicional mínimo garantido pela CLT para horas trabalhadas entre 22h e 5h?</div>
+      <div class="quiz-opcoes">
+        <button class="quiz-opcao" onclick="responder(this, 0)">10% sobre a hora normal</button>
+        <button class="quiz-opcao" onclick="responder(this, 1)">20% sobre a hora normal</button>
+        <button class="quiz-opcao" onclick="responder(this, 2)">30% sobre a hora normal</button>
+        <button class="quiz-opcao" onclick="responder(this, 3)">50% sobre a hora normal</button>
+      </div>
+      <div class="quiz-feedback" id="fb0">✅ Correto! O Art. 73 da CLT garante adicional mínimo de 20% para o trabalho noturno. Convenções coletivas podem prever percentuais maiores.</div>
+    </div>
+
+    <!-- P2 -->
+    <div class="quiz-pergunta" data-resposta="2">
+      <div class="quiz-enunciado">Quantos minutos equivale uma hora noturna, segundo a CLT?</div>
+      <div class="quiz-opcoes">
+        <button class="quiz-opcao" onclick="responder(this, 0)">60 minutos (igual ao dia)</button>
+        <button class="quiz-opcao" onclick="responder(this, 1)">55 minutos</button>
+        <button class="quiz-opcao" onclick="responder(this, 2)">52 minutos e 30 segundos</button>
+        <button class="quiz-opcao" onclick="responder(this, 3)">45 minutos</button>
+      </div>
+      <div class="quiz-feedback" id="fb1">✅ Correto! A hora noturna é reduzida para 52min30s, o que beneficia o trabalhador no cálculo da jornada.</div>
+    </div>
+
+    <!-- P3 -->
+    <div class="quiz-pergunta" data-resposta="0">
+      <div class="quiz-enunciado">No regime 12x36, qual é o descanso mínimo garantido após cada turno?</div>
+      <div class="quiz-opcoes">
+        <button class="quiz-opcao" onclick="responder(this, 0)">36 horas consecutivas</button>
+        <button class="quiz-opcao" onclick="responder(this, 1)">24 horas consecutivas</button>
+        <button class="quiz-opcao" onclick="responder(this, 2)">12 horas consecutivas</button>
+        <button class="quiz-opcao" onclick="responder(this, 3)">Depende do contrato</button>
+      </div>
+      <div class="quiz-feedback" id="fb2">✅ Correto! O regime 12x36 garante 36 horas de descanso após cada 12 horas trabalhadas, conforme o Art. 59-A da CLT.</div>
+    </div>
+
+    <!-- P4 -->
+    <div class="quiz-pergunta" data-resposta="3">
+      <div class="quiz-enunciado">Qual é o acréscimo mínimo para horas extras trabalhadas em dias normais?</div>
+      <div class="quiz-opcoes">
+        <button class="quiz-opcao" onclick="responder(this, 0)">20%</button>
+        <button class="quiz-opcao" onclick="responder(this, 1)">30%</button>
+        <button class="quiz-opcao" onclick="responder(this, 2)">40%</button>
+        <button class="quiz-opcao" onclick="responder(this, 3)">50%</button>
+      </div>
+      <div class="quiz-feedback" id="fb3">✅ Correto! O Art. 59 da CLT garante adicional mínimo de 50% para horas extras em dias normais, e 100% em domingos e feriados.</div>
+    </div>
+
+    <!-- P5 -->
+    <div class="quiz-pergunta" data-resposta="1">
+      <div class="quiz-enunciado">Qual é o prazo para reclamar direitos trabalhistas na Justiça do Trabalho após o término do contrato?</div>
+      <div class="quiz-opcoes">
+        <button class="quiz-opcao" onclick="responder(this, 0)">6 meses</button>
+        <button class="quiz-opcao" onclick="responder(this, 1)">2 anos</button>
+        <button class="quiz-opcao" onclick="responder(this, 2)">5 anos</button>
+        <button class="quiz-opcao" onclick="responder(this, 3)">Sem prazo</button>
+      </div>
+      <div class="quiz-feedback" id="fb4">✅ Correto! O prazo prescricional trabalhista é de 2 anos após o fim do contrato. Durante o contrato, podem ser cobrados os últimos 5 anos.</div>
+    </div>
+
+    <!-- Resultado final -->
+    <div class="quiz-resultado-final" id="quiz-final">
+      <div class="quiz-placar" id="placar-texto">0/5</div>
+      <p style="margin-top:1rem;color:rgba(245,244,240,0.7);font-size:0.95rem" id="placar-msg"></p>
+      <button class="btn btn-primary" style="margin-top:2rem" onclick="reiniciarQuiz()">Tentar novamente</button>
+    </div>
+
+    <div class="quiz-nav" id="quiz-nav">
+      <button class="btn btn-outline" id="btn-proximo" onclick="proximaPergunta()" disabled>Próxima →</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Direitos NOC</div>
+  <div class="footer-info">
+    Projeto de Extensão – Análise e Desenvolvimento de Sistemas<br>
+    NOC STTE – Embratel · Salvador, Bahia · 2026<br>
+    As informações têm caráter educativo. Consulte sempre um advogado trabalhista.
+  </div>
+</footer>
+
+<script>
+  // REVEAL
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visivel'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // CALCULADORA
+  function calcular() {
+    const salario = parseFloat(document.getElementById('salario').value) || 0;
+    const horasNoturnas = parseFloat(document.getElementById('horasNoturnas').value) || 0;
+    const horasExtras = parseFloat(document.getElementById('horasExtras').value) || 0;
+    if (salario <= 0) return;
+    const horasMes = 220;
+    const horaNormal = salario / horasMes;
+    const adicNoturno = horaNormal * 0.20 * horasNoturnas;
+    const adicExtra = horaNormal * 0.50 * horasExtras;
+    const total = adicNoturno + adicExtra;
+    const fmt = v => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    document.getElementById('r-hora').textContent = fmt(horaNormal);
+    document.getElementById('r-noturno').textContent = fmt(adicNoturno);
+    document.getElementById('r-extra').textContent = fmt(adicExtra);
+    document.getElementById('r-total').textContent = fmt(total);
+    document.getElementById('resultado').classList.add('ativo');
+  }
+
+  // QUIZ
+  let perguntaAtual = 0;
+  let acertos = 0;
+  let respondeu = false;
+  const perguntas = document.querySelectorAll('.quiz-pergunta');
+  const feedbacks = document.querySelectorAll('.quiz-feedback');
+
+  function responder(btn, idx) {
+    if (respondeu) return;
+    respondeu = true;
+    const correta = parseInt(perguntas[perguntaAtual].dataset.resposta);
+    const opcoes = perguntas[perguntaAtual].querySelectorAll('.quiz-opcao');
+    opcoes[correta].classList.add('correta');
+    if (idx !== correta) {
+      btn.classList.add('errada');
+    } else {
+      acertos++;
+    }
+    feedbacks[perguntaAtual].classList.add('ativo');
+    document.getElementById('btn-proximo').disabled = false;
+  }
+
+  function proximaPergunta() {
+    perguntas[perguntaAtual].classList.remove('ativa');
+    perguntaAtual++;
+    respondeu = false;
+    document.getElementById('btn-proximo').disabled = true;
+    if (perguntaAtual < perguntas.length) {
+      perguntas[perguntaAtual].classList.add('ativa');
+      document.getElementById('quiz-progresso').textContent = `Pergunta ${perguntaAtual + 1} de ${perguntas.length}`;
+    } else {
+      document.getElementById('quiz-nav').style.display = 'none';
+      document.getElementById('quiz-progresso').style.display = 'none';
+      const final = document.getElementById('quiz-final');
+      final.classList.add('ativo');
+      document.getElementById('placar-texto').textContent = `${acertos}/${perguntas.length}`;
+      const msgs = ['Continue estudando seus direitos!', 'Bom começo! Ainda há muito para aprender.', 'Você está no caminho certo!', 'Muito bom! Você conhece bem seus direitos.', 'Parabéns! Você domina seus direitos trabalhistas!'];
+      document.getElementById('placar-msg').textContent = msgs[acertos] || msgs[4];
+    }
+  }
+
+  function reiniciarQuiz() {
+    perguntaAtual = 0; acertos = 0; respondeu = false;
+    perguntas.forEach((p, i) => {
+      p.classList.toggle('ativa', i === 0);
+      p.querySelectorAll('.quiz-opcao').forEach(o => o.classList.remove('correta','errada'));
+    });
+    feedbacks.forEach(f => f.classList.remove('ativo'));
+    document.getElementById('quiz-final').classList.remove('ativo');
+    document.getElementById('quiz-nav').style.display = 'flex';
+    document.getElementById('quiz-progresso').style.display = 'block';
+    document.getElementById('quiz-progresso').textContent = 'Pergunta 1 de 5';
+    document.getElementById('btn-proximo').disabled = true;
+  }
+</script>
+</body>
+</html>
